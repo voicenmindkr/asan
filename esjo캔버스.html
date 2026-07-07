@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>보이스앤마인드 | 아산재단 장학생 나다운 브랜드 스토리 ESJO 캔버스</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Noto Sans KR & Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            background-color: #0b0f19;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar for mobile lists */
+        .custom-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 99px;
+        }
+        /* Touch friendly buttons with active state animation */
+        .btn-touch {
+            touch-action: manipulation;
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-touch:active {
+            transform: scale(0.96);
+            filter: brightness(0.9);
+        }
+        /* Post-it glowing effect representing "Bul-Ssi" (Flame) */
+        .glow-e { box-shadow: 0 0 12px rgba(16, 185, 129, 0.15); }
+        .glow-s { box-shadow: 0 0 12px rgba(99, 102, 241, 0.15); }
+        .glow-j { box-shadow: 0 0 12px rgba(20, 184, 166, 0.15); }
+        .glow-o { box-shadow: 0 0 12px rgba(244, 63, 94, 0.15); }
+    </style>
+</head>
+<body class="p-3 sm:p-6 min-h-screen flex items-center justify-center text-slate-100 selection:bg-teal-500 selection:text-slate-950">
+
+    <!-- MAIN WORKSPACE CONTAINER -->
+    <div id="main-container" class="w-full max-w-4xl bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800/80 overflow-hidden flex flex-col justify-between transition-all duration-300">
+        
+        <!-- TOP CAPTURE GUIDE BANNER -->
+        <div id="top-banner" class="bg-gradient-to-r from-emerald-500 via-indigo-500 to-rose-500 px-4 py-2 text-center text-slate-950 text-xs font-black tracking-tight flex items-center justify-center gap-1.5 no-print">
+            <i class="fa-solid fa-wand-magic-sparkles text-sm animate-pulse"></i>
+            <span>노트북 없어도 OK! 나만의 경험을 포스트잇으로 붙이고 캡처해 소장하세요!</span>
+        </div>
+
+        <!-- TOP BRANDING BAR -->
+        <div id="header-bar" class="bg-slate-950/80 px-4 sm:px-6 py-4 border-b border-slate-800/60 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            <div>
+                <div class="flex items-center gap-1.5 mb-1">
+                    <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">ASAN FOUNDATION</span>
+                    <p class="text-[10px] text-slate-400 font-medium">아산재단 장학생 커리어 브랜딩</p>
+                </div>
+                <h1 class="text-base sm:text-lg font-black tracking-tight text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-shapes text-emerald-400 text-sm"></i>
+                    나다운 브랜드 스토리 <span class="text-emerald-400">ESJO 캔버스</span>
+                </h1>
+            </div>
+            
+            <!-- Metadata inputs -->
+            <div class="flex gap-2 text-xs w-full md:w-auto">
+                <div class="bg-slate-900/80 px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-slate-800 flex-1 md:flex-initial">
+                    <span class="text-slate-500 font-bold shrink-0">이름</span>
+                    <input type="text" id="user-name" placeholder="이름 입력" class="bg-transparent border-none text-white focus:outline-none focus:ring-0 font-bold w-full md:w-16 placeholder:text-slate-700 text-center text-xs">
+                </div>
+                <div class="bg-slate-900/80 px-2.5 py-1.5 rounded-lg flex items-center gap-1 border border-slate-800 flex-1 md:flex-initial">
+                    <span class="text-slate-500 font-bold shrink-0">희망직무</span>
+                    <input type="text" id="user-job" placeholder="직무 입력" class="bg-transparent border-none text-emerald-400 focus:outline-none focus:ring-0 font-bold w-full md:w-24 placeholder:text-emerald-400/20 text-center text-xs">
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN ESJO GRID (Fully Responsive) -->
+        <div id="canvas-grid" class="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-3 bg-slate-900/30">
+            
+            <!-- E: Experience (경험) -->
+            <div class="bg-slate-950/40 rounded-xl p-3 border border-emerald-500/10 hover:border-emerald-500/20 shadow-lg flex flex-col justify-between min-h-[160px] transition-all duration-200">
+                <div>
+                    <div class="flex items-center justify-between border-b border-slate-800/60 pb-1.5 mb-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-black text-[10px] font-mono">E</span>
+                            <h2 class="font-bold text-slate-300 text-xs">Experience (경험)</h2>
+                        </div>
+                        <span class="text-[9px] text-emerald-400/70 font-bold tracking-tight">가장 몰입한/빡친 썰</span>
+                    </div>
+                    <div id="notes-e" class="space-y-1.5 mb-2 max-h-[120px] overflow-y-auto pr-1 custom-scroll">
+                        <!-- Dynamic Post-its -->
+                    </div>
+                </div>
+                <button onclick="openNoteModal('e')" class="btn-touch w-full py-2 bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/20 text-emerald-400 text-[11px] font-bold rounded-lg flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-plus text-[9px]"></i> 경험 적기
+                </button>
+            </div>
+
+            <!-- S: Strength (강점) -->
+            <div class="bg-slate-950/40 rounded-xl p-3 border border-indigo-500/10 hover:border-indigo-500/20 shadow-lg flex flex-col justify-between min-h-[160px] transition-all duration-200">
+                <div>
+                    <div class="flex items-center justify-between border-b border-slate-800/60 pb-1.5 mb-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400 font-black text-[10px] font-mono">S</span>
+                            <h2 class="font-bold text-slate-300 text-xs">Strength (강점)</h2>
+                        </div>
+                        <span class="text-[9px] text-indigo-400/70 font-bold tracking-tight">경험에서 발견한 내 무기</span>
+                    </div>
+                    <div id="notes-s" class="space-y-1.5 mb-2 max-h-[120px] overflow-y-auto pr-1 custom-scroll">
+                        <!-- Dynamic Post-its -->
+                    </div>
+                </div>
+                <button onclick="openNoteModal('s')" class="btn-touch w-full py-2 bg-indigo-500/10 hover:bg-indigo-500/15 border border-indigo-500/20 text-indigo-400 text-[11px] font-bold rounded-lg flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-plus text-[9px]"></i> 강점 적기
+                </button>
+            </div>
+
+            <!-- J: Job (직무) -->
+            <div class="bg-slate-950/40 rounded-xl p-3 border border-teal-500/10 hover:border-teal-500/20 shadow-lg flex flex-col justify-between min-h-[160px] transition-all duration-200">
+                <div>
+                    <div class="flex items-center justify-between border-b border-slate-800/60 pb-1.5 mb-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded bg-teal-500/10 flex items-center justify-center text-teal-400 font-black text-[10px] font-mono">J</span>
+                            <h2 class="font-bold text-slate-300 text-xs">Job (직무)</h2>
+                        </div>
+                        <span class="text-[9px] text-teal-400/70 font-bold tracking-tight">강점이 쓰일 구체적 업무</span>
+                    </div>
+                    <div id="notes-j" class="space-y-1.5 mb-2 max-h-[120px] overflow-y-auto pr-1 custom-scroll">
+                        <!-- Dynamic Post-its -->
+                    </div>
+                </div>
+                <button onclick="openNoteModal('j')" class="btn-touch w-full py-2 bg-teal-500/10 hover:bg-teal-500/15 border border-teal-500/20 text-teal-400 text-[11px] font-bold rounded-lg flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-plus text-[9px]"></i> 직무 적기
+                </button>
+            </div>
+
+            <!-- O: Organization (조직) -->
+            <div class="bg-slate-950/40 rounded-xl p-3 border border-rose-500/10 hover:border-rose-500/20 shadow-lg flex flex-col justify-between min-h-[160px] transition-all duration-200">
+                <div>
+                    <div class="flex items-center justify-between border-b border-slate-800/60 pb-1.5 mb-2">
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-5 h-5 rounded bg-rose-500/10 flex items-center justify-center text-rose-400 font-black text-[10px] font-mono">O</span>
+                            <h2 class="font-bold text-slate-300 text-xs">Organization (조직)</h2>
+                        </div>
+                        <span class="text-[9px] text-rose-400/70 font-bold tracking-tight">회사에 필요한 이유</span>
+                    </div>
+                    <div id="notes-o" class="space-y-1.5 mb-2 max-h-[120px] overflow-y-auto pr-1 custom-scroll">
+                        <!-- Dynamic Post-its -->
+                    </div>
+                </div>
+                <button onclick="openNoteModal('o')" class="btn-touch w-full py-2 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 text-[11px] font-bold rounded-lg flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-plus text-[9px]"></i> 조직 적기
+                </button>
+            </div>
+
+        </div>
+
+        <!-- PITCH STATEMENT BOX (BLUF / PREP Structure with Optimized Wording) -->
+        <div id="pitch-statement-box" class="mx-3 sm:mx-5 my-2 p-3.5 bg-slate-950/80 rounded-xl border border-slate-800/80 shadow-md">
+            <div class="flex items-center gap-1.5 mb-2 border-b border-slate-800/40 pb-1.5">
+                <div class="w-5 h-5 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                    <i class="fa-solid fa-microphone-lines text-[10px]"></i>
+                </div>
+                <h2 class="font-bold text-slate-200 text-xs tracking-tight">나다움 1분 브랜드 피칭 (BLUF/PREP 구조)</h2>
+                <span class="text-[8px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded ml-auto">실시간 조립</span>
+            </div>
+            
+            <p class="text-[11px] text-slate-400 leading-relaxed font-normal">
+                저는 <span id="pitch-e" class="text-emerald-400 font-bold border-b border-dashed border-emerald-500/30 px-1">(어떤 경험)</span>을 통해 
+                나만의 핵심 무기인 <span id="pitch-s" class="text-indigo-400 font-bold border-b border-dashed border-indigo-500/30 px-1">(어떤 강점)</span>을 증명해 왔습니다. 
+                이 역량으로 향후 <span id="pitch-j" class="text-teal-400 font-bold border-b border-dashed border-teal-500/30 px-1">(어떤 직무)</span>에서 기여할 것이며, 
+                궁극적으로 <span id="pitch-o" class="text-rose-400 font-bold border-b border-dashed border-rose-500/30 px-1">(해당 조직)</span>의 비전을 실행시키는 가장 확실한 파트너가 되겠습니다.
+            </p>
+        </div>
+
+        <!-- FOOTER & UTILITY BAR -->
+        <div id="footer-bar" class="bg-slate-950 px-5 py-4 flex flex-col sm:flex-row justify-between items-center gap-3 border-t border-slate-800/60 text-slate-500 text-[10px]">
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-brain text-emerald-400 text-sm animate-pulse"></i>
+                <span class="font-bold text-slate-300">보이스앤마인드</span>
+                <span class="text-slate-700">|</span>
+                <span>Voice & Mind Canvas</span>
+            </div>
+            
+            <div class="flex items-center gap-1.5 w-full sm:w-auto">
+                <button onclick="resetCanvas()" class="btn-touch flex-1 sm:flex-none bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold px-3 py-2 rounded-lg border border-slate-800 text-[10px] flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> 초기화
+                </button>
+                <button onclick="copyCanvasText()" class="btn-touch flex-1 sm:flex-none bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-3.5 py-2 rounded-lg text-[10px] flex items-center justify-center gap-1 shadow-lg shadow-indigo-600/10">
+                    <i class="fa-solid fa-copy"></i> 카톡 전송용 복사
+                </button>
+                <button id="toggle-capture-btn" onclick="toggleCaptureMode()" class="btn-touch flex-1 sm:flex-none bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-lg text-[10px] flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/10">
+                    <i class="fa-solid fa-camera"></i> 📸 캡처 모드
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Input Modal (Tailored for Mobile Touch) -->
+    <div id="note-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-150">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl max-w-sm w-full p-4 shadow-2xl flex flex-col gap-3">
+            <div class="flex items-center gap-1.5 border-b border-slate-800 pb-1.5">
+                <i class="fa-solid fa-pen-nib text-emerald-400 text-xs"></i>
+                <h3 id="modal-title" class="font-bold text-xs text-slate-200">포스트잇 입력</h3>
+            </div>
+            <textarea id="modal-input" placeholder="키워드나 문장을 간단하게 적어보세요." 
+                      class="w-full h-20 bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-emerald-500 rounded-lg p-2.5 text-xs text-slate-200 placeholder:text-slate-700 focus:outline-none transition-all duration-150 resize-none"></textarea>
+            <div class="flex justify-end gap-1.5 text-[10px]">
+                <button onclick="closeNoteModal()" class="btn-touch px-3 py-2 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-400 font-bold rounded-lg">취소</button>
+                <button onclick="saveNote()" class="btn-touch px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-lg">붙이기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Notification Modal (Anti-alert Guardrail) -->
+    <div id="alert-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-150">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl max-w-sm w-full p-4 shadow-2xl flex flex-col gap-3 text-center">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto">
+                <i class="fa-solid fa-circle-check text-lg"></i>
+            </div>
+            <h3 id="alert-title" class="font-bold text-sm text-slate-100">알림</h3>
+            <p id="alert-message" class="text-xs text-slate-400 leading-relaxed"></p>
+            <button onclick="closeAlertModal()" class="btn-touch mt-2 w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-lg">확인</button>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SCRIPT LOGIC -->
+    <script>
+        // Core ESJO Dataset State
+        let esjoData = {
+            e: [],
+            s: [],
+            j: [],
+            o: []
+        };
+        let activeCategory = null;
+        let isCaptureMode = false;
+
+        // Custom Notification Utility
+        function customAlert(title, message) {
+            document.getElementById('alert-title').textContent = title;
+            document.getElementById('alert-message').textContent = message;
+            
+            const modal = document.getElementById('alert-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+            }, 10);
+        }
+
+        function closeAlertModal() {
+            const modal = document.getElementById('alert-modal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+        }
+
+        // Initialize and Load Data from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('esjo_saved_data')) {
+                esjoData = JSON.parse(localStorage.getItem('esjo_saved_data'));
+            }
+            
+            document.getElementById('user-name').value = localStorage.getItem('esjo_user_name') || '';
+            document.getElementById('user-job').value = localStorage.getItem('esjo_user_job') || '';
+
+            // Attach Auto-save Listeners for inputs
+            document.getElementById('user-name').addEventListener('input', (e) => {
+                localStorage.setItem('esjo_user_name', e.target.value);
+                updatePitch();
+            });
+            document.getElementById('user-job').addEventListener('input', (e) => {
+                localStorage.setItem('esjo_user_job', e.target.value);
+                updatePitch();
+            });
+
+            renderAllNotes();
+            updatePitch();
+        });
+
+        // Save State Utility
+        function saveState() {
+            localStorage.setItem('esjo_saved_data', JSON.stringify(esjoData));
+            updatePitch();
+        }
+
+        // Post-it Modal Triggers
+        function openNoteModal(category) {
+            activeCategory = category;
+            const titles = { e: '경험(E) 포스트잇 추가', s: '강점(S) 포스트잇 추가', j: '직무(J) 포스트잇 추가', o: '조직(O) 포스트잇 추가' };
+            document.getElementById('modal-title').textContent = titles[category];
+            document.getElementById('modal-input').value = '';
+            
+            const modal = document.getElementById('note-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+            }, 10);
+            document.getElementById('modal-input').focus();
+        }
+
+        function closeNoteModal() {
+            const modal = document.getElementById('note-modal');
+            modal.classList.remove('opacity-100');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 150);
+            activeCategory = null;
+        }
+
+        function saveNote() {
+            const val = document.getElementById('modal-input').value.trim();
+            if (val && activeCategory) {
+                esjoData[activeCategory].push(val);
+                saveState();
+                renderSectionNotes(activeCategory);
+            }
+            closeNoteModal();
+        }
+
+        // Render functions
+        function renderSectionNotes(section) {
+            const container = document.getElementById(`notes-${section}`);
+            container.innerHTML = "";
+            
+            let bgClass = "bg-emerald-500/10 border-emerald-500/20 text-emerald-300";
+            if (section === 's') bgClass = "bg-indigo-500/10 border-indigo-500/20 text-indigo-300";
+            if (section === 'j') bgClass = "bg-teal-500/10 border-teal-500/20 text-teal-300";
+            if (section === 'o') bgClass = "bg-rose-500/10 border-rose-500/20 text-rose-300";
+
+            esjoData[section].forEach((note, index) => {
+                const noteEl = document.createElement('div');
+                noteEl.className = `p-2 rounded-lg border flex items-start justify-between gap-1.5 text-[11px] shadow-sm ${bgClass}`;
+                noteEl.innerHTML = `
+                    <span class="font-medium break-all whitespace-pre-wrap">${note}</span>
+                    <button onclick="removeNote('${section}', ${index})" class="text-slate-500 hover:text-rose-400 shrink-0 p-0.5 btn-touch">
+                        <i class="fa-solid fa-xmark text-[9px]"></i>
+                    </button>
+                `;
+                container.appendChild(noteEl);
+            });
+            updatePitch();
+        }
+
+        function removeNote(section, index) {
+            esjoData[section].splice(index, 1);
+            saveState();
+            renderSectionNotes(section);
+        }
+
+        function renderAllNotes() {
+            renderSectionNotes('e');
+            renderSectionNotes('s');
+            renderSectionNotes('j');
+            renderSectionNotes('o');
+        }
+
+        // Real-time Pitch Alignment
+        function updatePitch() {
+            const mappings = {
+                e: { id: 'pitch-e', default: '(어떤 경험)' },
+                s: { id: 'pitch-s', default: '(어떤 강점)' },
+                j: { id: 'pitch-j', default: '(어떤 직무)' },
+                o: { id: 'pitch-o', default: '(해당 조직)' }
+            };
+
+            for (const key in mappings) {
+                const el = document.getElementById(mappings[key].id);
+                if (esjoData[key] && esjoData[key].length > 0) {
+                    el.textContent = `[${esjoData[key].join(', ')}]`;
+                    el.className = el.className.replace('text-slate-400', '');
+                } else {
+                    el.textContent = mappings[key].default;
+                }
+            }
+        }
+
+        // Reset Canvas States
+        function resetCanvas() {
+            esjoData = { e: [], s: [], j: [], o: [] };
+            localStorage.removeItem('esjo_saved_data');
+            localStorage.removeItem('esjo_user_name');
+            localStorage.removeItem('esjo_user_job');
+            
+            document.getElementById('user-name').value = '';
+            document.getElementById('user-job').value = '';
+            
+            renderAllNotes();
+            customAlert("✅ 초기화 완료", "캔버스 데이터가 새롭게 세팅되었습니다.");
+        }
+
+        // Copy Canvas Text for KaKao submit (Optimized for Mobile Clipboard)
+        function copyCanvasText() {
+            const name = document.getElementById('user-name').value || "미입력";
+            const job = document.getElementById('user-job').value || "미입력";
+
+            let copyText = `📊 [보이스앤마인드 | 아산재단 장학생 ESJO 캔버스]\n`;
+            copyText += `▪️ 지원 장학생: ${name}\n`;
+            copyText += `▪️ 희망 직무: ${job}\n`;
+            copyText += `-------------------------------------------\n\n`;
+            copyText += `E [Experience/경험]:\n  - ${esjoData.e.join('\n  - ') || '기입 전'}\n\n`;
+            copyText += `S [Strength/강점]:\n  - ${esjoData.s.join('\n  - ') || '기입 전'}\n\n`;
+            copyText += `J [Job/직무]:\n  - ${esjoData.j.join('\n  - ') || '기입 전'}\n\n`;
+            copyText += `O [Organization/조직]:\n  - ${esjoData.o.join('\n  - ') || '기입 전'}\n\n`;
+            
+            const pitchBoxText = document.getElementById('pitch-statement-box').querySelector('p').textContent.replace(/\s+/g, ' ').trim();
+            copyText += `-------------------------------------------\n\n`;
+            copyText += `🎤 나다움 1분 브랜드 피칭 문장:\n"${pitchBoxText}"`;
+
+            // Clipboard safe copy wrapper
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(copyText).then(() => {
+                    customAlert("📋 결과 복사 완료", "카톡 단톡방이나 메모장에 바로 '붙여넣기' 하실 수 있습니다.");
+                }).catch(() => {
+                    customAlert("알림", "모바일 보안 환경으로 인해 자동 복사가 차단되었습니다. 화면을 캡처해서 소장해 주세요!");
+                });
+            } else {
+                customAlert("알림", "모바일 보안 환경으로 인해 자동 복사가 차단되었습니다. 화면을 캡처해서 소장해 주세요!");
+            }
+        }
+
+        // Premium Mobile Capture Toggle (re-scales container into vertical card for easy screenshot)
+        function toggleCaptureMode() {
+            const body = document.body;
+            const mainContainer = document.getElementById('main-container');
+            const topBanner = document.getElementById('top-banner');
+            const footerBar = document.getElementById('footer-bar');
+            const grid = document.getElementById('canvas-grid');
+            
+            const addButtons = grid.querySelectorAll('button');
+            const notesContainers = [
+                document.getElementById('notes-e'),
+                document.getElementById('notes-s'),
+                document.getElementById('notes-j'),
+                document.getElementById('notes-o')
+            ];
+
+            if (!isCaptureMode) {
+                isCaptureMode = true;
+                topBanner.classList.add('hidden');
+                footerBar.classList.add('hidden');
+                addButtons.forEach(btn => btn.classList.add('hidden'));
+                
+                notesContainers.forEach(container => {
+                    container.classList.remove('max-h-[120px]');
+                    container.classList.add('max-h-none'); // Expand everything to fully display on image
+                });
+
+                // Change container structure to fit vertical phone aspect ratio
+                mainContainer.className = "w-full max-w-sm bg-slate-900 border-2 border-emerald-500 rounded-none shadow-none";
+                body.className = "p-0 min-h-screen bg-slate-950 flex items-start justify-center";
+
+                // Add real-time watermark guide back to normal
+                const watermark = document.createElement('div');
+                watermark.id = "watermark-back-guide";
+                watermark.className = "bg-emerald-500 text-slate-950 p-3 text-center text-[10px] font-black tracking-tight btn-touch cursor-pointer";
+                watermark.innerHTML = `<span>📸 화면을 캡처하신 후, 이 배너를 터치하면 편집 화면으로 돌아갑니다.</span>`;
+                watermark.onclick = toggleCaptureMode;
+                mainContainer.appendChild(watermark);
+            } else {
+                isCaptureMode = false;
+                topBanner.classList.remove('hidden');
+                footerBar.classList.remove('hidden');
+                addButtons.forEach(btn => btn.classList.remove('hidden'));
+
+                notesContainers.forEach(container => {
+                    container.classList.add('max-h-[120px]');
+                    container.classList.remove('max-h-none');
+                });
+
+                mainContainer.className = "w-full max-w-4xl bg-slate-900/90 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-800/80 overflow-hidden flex flex-col justify-between transition-all duration-300";
+                body.className = "p-3 sm:p-6 min-h-screen flex items-center justify-center text-slate-100 selection:bg-teal-500 selection:text-slate-950";
+
+                const watermark = document.getElementById('watermark-back-guide');
+                if (watermark) watermark.remove();
+            }
+        }
+    </script>
+</body>
+</html>
