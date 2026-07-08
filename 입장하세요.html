@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASAN 프로그램 선택 포털</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Pretendard & Inter) -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Pretendard', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        asan: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0066ff',
+                            600: '#0052cc',
+                            700: '#003d99',
+                            900: '#002266',
+                        }
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 30px -10px rgba(0, 102, 255, 0.15)',
+                        'premium-hover': '0 20px 40px -15px rgba(0, 102, 255, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .card-glow-1 {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
+        }
+        .card-glow-2 {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(59, 130, 246, 0.08) 100%);
+        }
+        .dark .card-glow-1 {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+        }
+        .dark .card-glow-2 {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden antialiased">
+
+    <!-- Top Interactive Utilities -->
+    <header class="w-full max-w-7xl mx-auto px-6 py-4 flex justify-between items-center z-10">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-asan-500 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-asan-500/20">
+                A
+            </div>
+            <span class="font-bold tracking-tight text-lg text-slate-900 dark:text-white">ASAN Hub</span>
+        </div>
+        
+        <!-- Dark Mode Toggle Button -->
+        <button id="theme-toggle" class="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-asan-500 dark:hover:text-asan-400 transition-all duration-300 shadow-sm hover:scale-105" aria-label="Toggle Theme">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+        </button>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="flex-grow flex flex-col justify-center items-center px-4 md:px-8 py-10 max-w-6xl mx-auto w-full">
+        <!-- Hero/Title Area -->
+        <div class="text-center max-w-2xl mb-12 animate-fade-in">
+            <span class="px-3 py-1 text-xs font-semibold tracking-wider text-asan-600 dark:text-asan-400 bg-asan-50 dark:bg-asan-950/50 rounded-full border border-asan-100 dark:border-asan-900/50">
+                아산재단 면접스피치 워크숍
+            </span>
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mt-4 mb-5 text-slate-900 dark:text-white leading-tight">
+                통합 비즈니스 툴킷 포털
+            </h1>
+            <p class="text-base md:text-lg text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
+                필요한 도구를 선택하여 바로 작업을 시작해 보세요. 창의적인 아이디어 기획부터 체계적인 상호 평가까지 단 한 번의 클릭으로 연결됩니다.
+            </p>
+        </div>
+
+        <!-- Link Selection Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl px-2">
+            
+            <!-- Card 1: ESJO 캔버스 -->
+            <a href="https://voicenmindkr.github.io/asan/esjo%EC%BA%94%EB%B2%84%EC%8A%A4.html" 
+               target="_blank" rel="noopener noreferrer"
+               class="group relative flex flex-col justify-between p-8 min-h-[240px] rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-premium hover:shadow-premium-hover hover:border-indigo-400 dark:hover:border-indigo-600 hover:-translate-y-1.5 transition-all duration-500 overflow-hidden">
+                <!-- Glowing background pattern -->
+                <div class="absolute inset-0 card-glow-1 opacity-100 transition-opacity duration-300"></div>
+                
+                <div class="relative z-10">
+                    <!-- Icon Header -->
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900 flex items-center justify-center text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform duration-300 mb-6">
+                        <i data-lucide="layout-grid" class="w-7 h-7"></i>
+                    </div>
+                    
+                    <!-- Content -->
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
+                        ESJO 캔버스
+                    </h2>
+                </div>
+
+                <!-- Footer/Link Indicator -->
+                <div class="relative z-10 flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-semibold text-sm group-hover:translate-x-1.5 transition-transform duration-300 mt-8">
+                    <span>캔버스 작성하기</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </div>
+                
+                <!-- Subtle Gradient Accent Line -->
+                <div class="absolute bottom-0 left-0 h-[4px] w-0 bg-gradient-to-r from-indigo-500 to-violet-500 group-hover:w-full transition-all duration-500"></div>
+            </a>
+
+            <!-- Card 2: 면접 상호 평가표 -->
+            <a href="https://voicenmindkr.github.io/asan/%EB%A9%B4%EC%A0%91%EC%83%81%ED%98%B8%ED%8F%89%EA%B0%80%ED%91%9C.html" 
+               target="_blank" rel="noopener noreferrer"
+               class="group relative flex flex-col justify-between p-8 min-h-[240px] rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-premium hover:shadow-premium-hover hover:border-emerald-400 dark:hover:border-emerald-600 hover:-translate-y-1.5 transition-all duration-500 overflow-hidden">
+                <!-- Glowing background pattern -->
+                <div class="absolute inset-0 card-glow-2 opacity-100 transition-opacity duration-300"></div>
+                
+                <div class="relative z-10">
+                    <!-- Icon Header -->
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300 mb-6">
+                        <i data-lucide="clipboard-check" class="w-7 h-7"></i>
+                    </div>
+                    
+                    <!-- Content -->
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+                        면접 상호 평가표
+                    </h2>
+                </div>
+
+                <!-- Footer/Link Indicator -->
+                <div class="relative z-10 flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm group-hover:translate-x-1.5 transition-transform duration-300 mt-8">
+                    <span>상호 평가 진행하기</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </div>
+                
+                <!-- Subtle Gradient Accent Line -->
+                <div class="absolute bottom-0 left-0 h-[4px] w-0 bg-gradient-to-r from-emerald-500 to-teal-500 group-hover:w-full transition-all duration-500"></div>
+            </a>
+
+        </div>
+
+        <!-- Platform info banner -->
+        <div class="mt-16 w-full max-w-4xl p-5 rounded-2xl bg-slate-100/70 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div class="flex items-center gap-3">
+                <div class="p-2 rounded-lg bg-asan-50 dark:bg-asan-950/50 text-asan-600 dark:text-asan-400">
+                    <i data-lucide="help-circle" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-slate-800 dark:text-slate-200 text-sm">원하는 서비스가 보이지 않나요?</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">상단 북마크 혹은 관리자 페이지를 통해 링크 상태를 확인해 주세요.</p>
+                </div>
+            </div>
+            <span class="text-xs text-slate-400 dark:text-slate-500">v1.2.0 • Active</span>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full border-t border-slate-200 dark:border-slate-900 bg-white/50 dark:bg-slate-950/50 py-6 px-6 text-center text-xs text-slate-400 dark:text-slate-500">
+        <p>© 2026 ASAN Entrepreneurship Center. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripting for UI controls -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Dark/Light Theme Handler
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // On Page Load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
